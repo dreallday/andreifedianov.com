@@ -32,16 +32,16 @@ const LandingBio = () => (
       query LandingSiteTitleQuery {
         site {
           siteMetadata {
-            title
+            name_title
             subtitle
           }
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <OuterContainer>
         <Container>
-          <NameHeader>{data.site.siteMetadata.title}</NameHeader>
+          <NameHeader>{data.site.siteMetadata.name_title}</NameHeader>
           <Description>{data.site.siteMetadata.subtitle}</Description>
         </Container>
       </OuterContainer>

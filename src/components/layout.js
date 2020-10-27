@@ -35,22 +35,24 @@ const Layout = ({ children }) => (
       query SiteTitleQuery {
         site {
           siteMetadata {
-            title
+            name_title
           }
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <>
-        <Header siteTitle={data.site.siteMetadata.title} />
+        <Header siteTitle={data.site.siteMetadata.name_title} />
         <Content>
           <main>{children}</main>
           <Footer>
             <p>
-            © {new Date().getFullYear()}, Built with
-            {` `}
+              © {new Date().getFullYear()}, Built by
+              {` `}
             </p>
-            <GatsbyLink href="https://www.gatsbyjs.org">Gatsby</GatsbyLink>
+            <GatsbyLink href="https://codemercenaries.io">
+              CodeMercenaries
+            </GatsbyLink>
           </Footer>
         </Content>
       </>
