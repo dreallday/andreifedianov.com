@@ -1,0 +1,60 @@
+---
+import { skills } from "../data/resume.js"
+---
+
+<section id="skills">
+  <div class="wrap-inner">
+    <h2 class="section-title">Skills</h2>
+
+    <div class="groups">
+      {
+        skills.map((s) => (
+          <div class="group">
+            <h3>{s.group}</h3>
+            <ul>
+              {s.items.map((i) => (
+                <li>{i}</li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .wrap-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 1.4rem;
+  }
+  .groups {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+  .group h3 {
+    margin: 0 0 0.7rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--fg-faint);
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  li {
+    font-size: 0.85rem;
+    font-family: var(--mono);
+    color: var(--tag-fg);
+    background: var(--tag-bg);
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+  }
+</style>

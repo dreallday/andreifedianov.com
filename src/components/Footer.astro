@@ -1,0 +1,36 @@
+---
+import { profile, contact } from "../data/resume.js"
+---
+
+<footer>
+  <div class="wrap-inner">
+    <p>
+      {contact.email && <a href={`mailto:${contact.email}`}>{contact.email}</a>}
+    </p>
+    <p class="fine">© {profile.name}</p>
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 2rem 0 3rem;
+  }
+  .wrap-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 1.4rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    color: var(--fg-muted);
+    font-size: 0.9rem;
+  }
+  p {
+    margin: 0;
+  }
+  .fine {
+    color: var(--fg-faint);
+  }
+</style>

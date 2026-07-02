@@ -1,0 +1,113 @@
+---
+import { experience } from "../data/resume.js"
+---
+
+<section id="experience">
+  <div class="wrap-inner">
+    <h2 class="section-title">Experience</h2>
+
+    {
+      experience.map((job) => (
+        <article class="job">
+          <div class="job-head">
+            <div>
+              <h3>{job.company}</h3>
+              <p class="role">{job.role}</p>
+            </div>
+            <div class="meta">
+              <span class="dates">
+                {job.start} – {job.end}
+              </span>
+              {job.location && <span class="loc">{job.location}</span>}
+            </div>
+          </div>
+
+          <ul>
+            {job.highlights.map((h) => (
+              <li>{h}</li>
+            ))}
+          </ul>
+
+          {job.tech?.length > 0 && (
+            <ul class="tech" aria-label="Technologies used">
+              {job.tech.map((t) => (
+                <li>{t}</li>
+              ))}
+            </ul>
+          )}
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .wrap-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 1.4rem;
+  }
+  .job {
+    margin-bottom: 2.6rem;
+  }
+  .job:last-child {
+    margin-bottom: 0;
+  }
+  .job-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  h3 {
+    margin: 0;
+    font-size: 1.15rem;
+  }
+  .role {
+    margin: 0.1rem 0 0;
+    color: var(--fg);
+    font-style: italic;
+  }
+  .meta {
+    text-align: right;
+    color: var(--fg-muted);
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+  .meta .dates {
+    display: block;
+    font-weight: 600;
+    color: var(--fg);
+  }
+  ul {
+    margin: 0.9rem 0 0;
+    padding-left: 1.15rem;
+  }
+  ul li {
+    margin-bottom: 0.4rem;
+    color: var(--fg-muted);
+  }
+  ul.tech {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+  ul.tech li {
+    margin: 0;
+    font-size: 0.8rem;
+    font-family: var(--mono);
+    color: var(--tag-fg);
+    background: var(--tag-bg);
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+  }
+  @media (max-width: 560px) {
+    .meta {
+      text-align: left;
+    }
+  }
+</style>

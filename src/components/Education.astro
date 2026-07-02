@@ -1,0 +1,59 @@
+---
+import { education } from "../data/resume.js"
+---
+
+<section id="education">
+  <div class="wrap-inner">
+    <h2 class="section-title">Education</h2>
+
+    {
+      education.map((e) => (
+        <div class="edu">
+          <div>
+            <h3>{e.credential}</h3>
+            <p class="inst">
+              {e.institution}
+              {e.location && <span class="loc"> · {e.location}</span>}
+            </p>
+          </div>
+          <span class="date">{e.date}</span>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .wrap-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 1.4rem;
+  }
+  .edu {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.2rem;
+  }
+  .edu:last-child {
+    margin-bottom: 0;
+  }
+  h3 {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+  .inst {
+    margin: 0.1rem 0 0;
+    color: var(--fg-muted);
+  }
+  .loc {
+    color: var(--fg-faint);
+  }
+  .date {
+    color: var(--fg-muted);
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+</style>

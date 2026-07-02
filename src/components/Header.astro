@@ -1,0 +1,117 @@
+---
+import { profile, contact } from "../data/resume.js"
+
+const links = [
+  contact.email && { label: "Email", href: `mailto:${contact.email}` },
+  contact.linkedin && { label: "LinkedIn", href: contact.linkedin },
+  contact.github && { label: "GitHub", href: contact.github },
+].filter(Boolean)
+---
+
+<header class="hero">
+  <div class="wrap-inner">
+    <button
+      id="theme-toggle"
+      class="theme-toggle no-print"
+      type="button"
+      aria-label="Toggle color theme"
+    >
+      <span class="icon-sun">☀</span>
+      <span class="icon-moon">☾</span>
+    </button>
+
+    <h1>{profile.name}</h1>
+    <p class="title">{profile.title}</p>
+    <p class="tagline">{profile.tagline}</p>
+    <p class="summary">{profile.summary}</p>
+
+    <nav class="contacts" aria-label="Contact links">
+      {
+        links.map((l) => (
+          <a
+            href={l.href}
+            rel={l.href.startsWith("http") ? "me noopener" : null}
+          >
+            {l.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<script is:inline>
+  const btn = document.getElementById("theme-toggle")
+  btn?.addEventListener("click", () => {
+    const root = document.documentElement
+    const next = root.dataset.theme === "dark" ? "light" : "dark"
+    root.dataset.theme = next
+    localStorage.setItem("theme", next)
+  })
+</script>
+
+<style>
+  .hero {
+    padding: 3.4rem 0 2.6rem;
+  }
+  .wrap-inner {
+    position: relative;
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 1.4rem;
+  }
+  h1 {
+    font-size: clamp(2.1rem, 6vw, 3rem);
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+  .title {
+    font-size: 1.15rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin: 0.3rem 0 0.9rem;
+  }
+  .tagline {
+    font-size: 1.15rem;
+    margin: 0 0 1.1rem;
+  }
+  .summary {
+    color: var(--fg-muted);
+    max-width: 62ch;
+    margin: 0 0 1.5rem;
+  }
+  .contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.4rem;
+    font-weight: 600;
+  }
+
+  .theme-toggle {
+    position: absolute;
+    top: 0;
+    right: 1.4rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--fg);
+    cursor: pointer;
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+  .theme-toggle:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .icon-moon {
+    display: none;
+  }
+  :global(:root[data-theme="dark"]) .icon-sun {
+    display: none;
+  }
+  :global(:root[data-theme="dark"]) .icon-moon {
+    display: inline;
+  }
+</style>
