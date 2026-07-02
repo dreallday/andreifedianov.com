@@ -31,7 +31,7 @@ import { experience } from "../data/resume.js"
           {job.tech?.length > 0 && (
             <ul class="tech" aria-label="Technologies used">
               {job.tech.map((t) => (
-                <li>{t}</li>
+                <li class="tag">{t}</li>
               ))}
             </ul>
           )}
@@ -42,11 +42,6 @@ import { experience } from "../data/resume.js"
 </section>
 
 <style>
-  .wrap-inner {
-    max-width: var(--maxw);
-    margin: 0 auto;
-    padding: 0 1.4rem;
-  }
   .job {
     margin-bottom: 2.6rem;
   }
@@ -98,12 +93,6 @@ import { experience } from "../data/resume.js"
   }
   ul.tech li {
     margin: 0;
-    font-size: 0.8rem;
-    font-family: var(--mono);
-    color: var(--tag-fg);
-    background: var(--tag-bg);
-    padding: 0.2rem 0.55rem;
-    border-radius: 4px;
   }
   @media (max-width: 560px) {
     .meta {

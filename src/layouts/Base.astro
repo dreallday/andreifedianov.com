@@ -1,10 +1,23 @@
 ---
 import "../styles/global.css"
-import { profile } from "../data/resume.js"
+import { profile, contact } from "../data/resume.js"
 
 const { title, description } = Astro.props
 const pageTitle = title ?? `${profile.name} — ${profile.title}`
 const pageDesc = description ?? profile.summary
+
+// schema.org Person structured data (SEO / rich results)
+const sameAs = [contact.linkedin, contact.github].filter((u) => u && u !== "#")
+const personLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: profile.title,
+  description: profile.summary,
+  email: contact.email,
+  url: Astro.site,
+  ...(sameAs.length ? { sameAs } : {}),
+}
 ---
 
 <!doctype html>
@@ -27,6 +40,8 @@ const pageDesc = description ?? profile.summary
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>AF</text></svg>"
     />
+
+    <script type="application/ld+json" set:html={JSON.stringify(personLd)} />
 
     <!-- Set theme before paint to avoid a flash of the wrong theme -->
     <script is:inline>

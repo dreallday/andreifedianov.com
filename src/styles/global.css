@@ -52,10 +52,21 @@ body {
     color 0.2s ease;
 }
 
-.wrap {
+/* Centered content container shared by the header, sections, and footer */
+.wrap-inner {
   max-width: var(--maxw);
   margin: 0 auto;
   padding: 0 1.4rem;
+}
+
+/* Monospace chip used for skills and tech lists */
+.tag {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--tag-fg);
+  background: var(--tag-bg);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
 }
 
 a {

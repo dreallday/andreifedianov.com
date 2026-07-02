@@ -14,10 +14,14 @@
     "deploy:local": "DEPLOY_LOCAL=1 bash scripts/deploy.sh"
   },
   "dependencies": {
-    "astro": "^5.13.0"
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^5.18.2"
   },
   "devDependencies": {
-    "prettier": "^3.4.2",
+    "prettier": "^3.9.4",
     "prettier-plugin-astro": "^0.14.1"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }

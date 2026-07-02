@@ -13,7 +13,7 @@ import { skills } from "../data/resume.js"
             <h3>{s.group}</h3>
             <ul>
               {s.items.map((i) => (
-                <li>{i}</li>
+                <li class="tag">{i}</li>
               ))}
             </ul>
           </div>
@@ -24,11 +24,6 @@ import { skills } from "../data/resume.js"
 </section>
 
 <style>
-  .wrap-inner {
-    max-width: var(--maxw);
-    margin: 0 auto;
-    padding: 0 1.4rem;
-  }
   .groups {
     display: grid;
     grid-template-columns: 1fr;
@@ -48,13 +43,5 @@ import { skills } from "../data/resume.js"
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-  }
-  li {
-    font-size: 0.85rem;
-    font-family: var(--mono);
-    color: var(--tag-fg);
-    background: var(--tag-bg);
-    padding: 0.25rem 0.6rem;
-    border-radius: 4px;
   }
 </style>
