@@ -49,9 +49,9 @@ export const experience = [
     ],
   },
   {
-    company: "Brickhouse Resources",
-    location: "Atlanta, GA (Remote)",
-    role: "Senior Backend Engineer — StreamLabs Water",
+    company: "StreamLabs Water",
+    location: "Atlanta, GA",
+    role: "Senior Backend Engineer — Contractor",
     start: "April 2024",
     end: "May 2025",
     highlights: [
@@ -64,7 +64,7 @@ export const experience = [
   },
   {
     company: "AutoFi",
-    location: "San Francisco, CA (Remote)",
+    location: "San Francisco, CA",
     role: "Senior Backend Engineer",
     start: "July 2022",
     end: "February 2024",
