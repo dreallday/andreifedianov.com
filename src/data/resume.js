@@ -106,9 +106,9 @@ export const experience = [
     ],
   },
   {
-    company: "Tin Roof Software",
+    company: "Cox Communications (via Tin Roof Software)",
     location: "Atlanta, GA",
-    role: "Contractor",
+    role: "Software Engineer — Contractor",
     start: "March 2015",
     end: "August 2015",
     highlights: [
