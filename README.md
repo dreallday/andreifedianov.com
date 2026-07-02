@@ -47,13 +47,15 @@ The site is served from a self-hosted **Unraid + nginx** box and deployed via
 `rsync` over SSH (see [`scripts/deploy.sh`](scripts/deploy.sh)):
 
 ```sh
-pnpm deploy         # -> Tailscale address
-pnpm deploy:local   # -> LAN address (same box)
+cp .env.deploy.example .env.deploy   # then fill in your host addresses (gitignored)
+pnpm deploy                          # -> DEPLOY_HOST      (e.g. Tailscale)
+pnpm deploy:local                    # -> DEPLOY_HOST_LOCAL (LAN, same box)
 ```
 
-`DEPLOY_HOST` / `DEPLOY_PATH` are env-overridable. Deploys authenticate as
-`root` over SSH, so a one-time `ssh root@<host>` (to accept the host key, and
-ideally `ssh-copy-id` for passwordless deploys) is required first.
+Real host addresses live in a gitignored `.env.deploy`; `DEPLOY_PATH` is
+overridable too. Deploys authenticate as `root` over SSH, so a one-time
+`ssh root@<host>` (to accept the host key, and ideally `ssh-copy-id` for
+passwordless deploys) is required first.
 
 The previous AWS S3 hosting is parked under [`legacy/`](legacy/README.md).
 

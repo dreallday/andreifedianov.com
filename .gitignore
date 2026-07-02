@@ -58,6 +58,9 @@ typings/
 dist/
 .astro/
 
+# local deploy config (real host addresses)
+.env.deploy
+
 # Mac files
 .DS_Store
 

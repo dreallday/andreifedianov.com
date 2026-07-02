@@ -41,15 +41,15 @@ Rendering is a straight composition — `src/pages/index.astro` imports the layo
 
 ## Deployment
 
-The site deploys to a self-hosted **Unraid + nginx** box via `rsync` over **SSH** (not the SMB mount — the SMB `admin` user can't write the webroot). `scripts/deploy.sh` runs a fresh `pnpm build`, then `rsync -avz --delete dist/` into the nginx webroot `/mnt/user/appdata/nginx-af/www/`.
+The site deploys to a self-hosted **Unraid + nginx** box via `rsync` over **SSH** (not the SMB mount — the SMB `admin` user can't write the webroot). `scripts/deploy.sh` runs a fresh `pnpm build`, then `rsync -avz --delete dist/` into the nginx webroot (`DEPLOY_PATH`, default `/mnt/user/appdata/nginx-af/www/`).
 
-- `pnpm deploy` — deploy to the Tailscale address (`root@REDACTED_HOST`, the default)
-- `pnpm deploy:local` — deploy to the LAN address (`root@REDACTED_HOST`); same box, same path
+- `pnpm deploy` — deploy to `DEPLOY_HOST` (e.g. a Tailscale address)
+- `pnpm deploy:local` — deploy to `DEPLOY_HOST_LOCAL` (LAN address; same box)
 
-`DEPLOY_HOST` and `DEPLOY_PATH` are env-overridable (`deploy:local` just sets `DEPLOY_HOST`). Deploys authenticate as `root` over SSH, so a one-time `ssh root@<host>` (accept host key) — and ideally `ssh-copy-id` for passwordless — must be done first. rsync writes root-owned files at source perms (644/755), which nginx (running as `nobody`) can still read.
+Real host addresses live in a **gitignored `.env.deploy`** (copy `.env.deploy.example`). The script sources it; `deploy:local` selects the LAN host via `DEPLOY_LOCAL=1`. Deploys authenticate as `root` over SSH, so a one-time `ssh root@<host>` (accept host key) — and ideally `ssh-copy-id` for passwordless — must be done first. rsync writes root-owned files at source perms (644/755), which nginx (running as `nobody`) can still read.
 
 ### Legacy AWS S3 hosting (parked)
 
-The previous S3 static-website setup lives in `legacy/terraform/` and is dormant. **The S3 buckets still exist** — parking the code didn't remove them. To decommission, run `terraform destroy` from `legacy/terraform/` (needs `codemercenaries` AWS creds; remote state in `s3://REDACTED_STATE_BUCKET`). See `legacy/README.md`.
+The previous S3 static-website setup lives in `legacy/terraform/` and is dormant. **The S3 buckets still exist** — parking the code didn't remove them. To decommission, fill in the real state bucket in `legacy/terraform/backend.tf` and run `terraform destroy` from there (needs the appropriate AWS credentials). See `legacy/README.md`.
 
 Code style (`.prettierrc`): **no semicolons, double quotes, 2-space indent, `es5` trailing commas, LF.**

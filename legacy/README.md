@@ -11,7 +11,7 @@ from an **Unraid + nginx** box (see `pnpm deploy` / `pnpm deploy:local` in the
 repo root), so this Terraform is dormant.
 
 > ⚠️ The S3 buckets still exist — parking the code does not remove live
-> infrastructure. If you want to decommission them, run `terraform destroy`
-> from `legacy/terraform/` (requires valid `codemercenaries` AWS credentials and
-> the remote state in `s3://REDACTED_STATE_BUCKET`). Otherwise it just
-> sits idle and costs ~nothing.
+> infrastructure. If you want to decommission them, fill in the real state
+> bucket in `backend.tf`, then run `terraform destroy` from `legacy/terraform/`
+> (requires valid AWS credentials). Otherwise it just sits idle and costs
+> ~nothing.
