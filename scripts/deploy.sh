@@ -16,8 +16,10 @@ fi
 
 if [ "${DEPLOY_LOCAL:-}" = "1" ]; then
   HOST="${DEPLOY_HOST_LOCAL:-}"
+  PORT="${DEPLOY_PORT_LOCAL:-22}"
 else
   HOST="${DEPLOY_HOST:-}"
+  PORT="${DEPLOY_PORT:-22}"
 fi
 DEPLOY_PATH="${DEPLOY_PATH:-/mnt/user/appdata/nginx-af/www/}"
 
@@ -29,7 +31,7 @@ fi
 echo "→ Building…"
 pnpm build
 
-echo "→ Deploying dist/ → ${HOST}:${DEPLOY_PATH}"
-rsync -avz --delete dist/ "${HOST}:${DEPLOY_PATH}"
+echo "→ Deploying dist/ → ${HOST}:${DEPLOY_PATH} (ssh port ${PORT})"
+rsync -avz --delete -e "ssh -p ${PORT}" dist/ "${HOST}:${DEPLOY_PATH}"
 
 echo "✓ Deployed to ${HOST}"

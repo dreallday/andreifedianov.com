@@ -25,7 +25,7 @@ export const experience = [
     highlights: [
       "Designed and built scalable backend services and platform APIs using TypeScript, Node.js, and Fastify across multiple microservices on AWS EKS, supporting a HIPAA-compliant healthcare platform for patient scheduling, billing, and care team communication.",
       "Drove a strangler-pattern migration replacing a legacy API gateway with a Node.js/Fastify proxy, using an OpenAPI 3.x driven architecture to keep routing and contracts in sync across services.",
-      "Migrated the platform's authentication to Auth0 JWT with end-to-end type safety, converting 40+ client call sites across 8 API clients to a secure, token-based fetch path.",
+      "Migrated the platform's authentication from Okta to Auth0 JWT with end-to-end type safety, converting 40+ client call sites across 8 API clients to a secure, token-based fetch path.",
       "Integrated the service with a Kong API gateway, registering routes from the OpenAPI spec and resolving cross-origin and gateway-routing issues at the edge.",
       "Designed ElastiCache/Redis caching strategies with cache stampede mitigation for high-traffic endpoints on EKS.",
       "Strengthened deployment reliability by adding automated CI gates that caught configuration and type-safety issues before they reached production.",
@@ -38,7 +38,8 @@ export const experience = [
       "Node.js",
       "Fastify",
       "OpenAPI",
-      "Okta/Auth0",
+      "Okta",
+      "Auth0",
       "Kong",
       "ElastiCache/Redis",
       "AWS EKS",

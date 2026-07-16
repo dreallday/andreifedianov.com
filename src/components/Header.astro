@@ -1,10 +1,18 @@
 ---
 import { profile, contact } from "../data/resume.js"
+// Served straight from the single source in raw/ — the build emits a hashed
+// copy; the download attribute gives it a clean filename on save.
+import resumeUrl from "../../raw/Andrei Fedianov - Resume 2026.pdf?url"
 
 const links = [
   contact.email && { label: "Email", href: `mailto:${contact.email}` },
   contact.linkedin && { label: "LinkedIn", href: contact.linkedin },
   contact.github && { label: "GitHub", href: contact.github },
+  {
+    label: "Resume (PDF)",
+    href: resumeUrl,
+    download: "Andrei Fedianov - Resume.pdf",
+  },
 ].filter(Boolean)
 ---
 
@@ -31,6 +39,7 @@ const links = [
           <a
             href={l.href}
             rel={l.href.startsWith("http") ? "me noopener" : null}
+            download={l.download ?? null}
           >
             {l.label}
           </a>
